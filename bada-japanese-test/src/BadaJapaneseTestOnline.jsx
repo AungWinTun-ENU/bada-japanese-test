@@ -227,43 +227,50 @@ export default function BadaJapaneseTestOnline() {
     setAnswers([]);
   };
 
-  // Start Screen
-  if (screen === 'start') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-50 to-cyan-100 flex items-center justify-center p-4">
-        <div className="bg-white rounded-3xl shadow-2xl p-10 max-w-3xl w-full border-4 border-blue-200">
-          <div className="text-center mb-10">
-            <BookOpen className="w-20 h-20 mx-auto mb-6 text-blue-500" />
-            <h1 className="text-5xl font-bold text-gray-800 mb-3">BadaJapaneseTestOnline</h1>
-            <p className="text-xl text-gray-600">日本語能力試験 練習テスト</p>
-          </div>
-          
-          <div className="mb-8 text-center">
-            <h2 className="text-2xl font-semibold text-gray-700 mb-4">レベルを選択してください</h2>
-            <p className="text-gray-500">Choose your level</p>
-          </div>
+    // Start Screen (updated for mobile responsiveness)
+    if (screen === 'start') {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-50 to-cyan-100 flex items-center justify-center p-4">
+                <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-10 max-w-3xl w-full border-4 border-blue-200 mx-4">
+                    <div className="text-center mb-8 md:mb-10">
+                        <BookOpen className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 text-blue-500" />
+                        <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-2 md:mb-3">BadaJapaneseTestOnline</h1>
+                        <p className="text-base md:text-xl text-gray-600">日本語能力試験 練習テスト</p>
+                    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {['N3', 'N2', 'N1'].map((lvl) => (
-              <button
-                key={lvl}
-                onClick={() => handleLevelSelect(lvl)}
-                className="bg-gradient-to-br from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-10 px-8 rounded-2xl transition duration-300 transform hover:scale-105 shadow-xl"
-              >
-                <div className="text-5xl mb-3">{lvl}</div>
-                <div className="text-lg">
-                  {lvl === 'N3' && 'Intermediate'}
-                  {lvl === 'N2' && 'Advanced'}
-                  {lvl === 'N1' && 'Expert'}
+                    <div className="mb-6 md:mb-8 text-center">
+                        <h2 className="text-xl md:text-2xl font-semibold text-gray-700 mb-3 md:mb-4">レベルを選択してください</h2>
+                        <p className="text-sm md:text-base text-gray-500">Choose your level</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                        {['N3', 'N2', 'N1'].map((lvl) => (
+                            <button
+                                key={lvl}
+                                onClick={() => handleLevelSelect(lvl)}
+                                className="bg-gradient-to-br from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-6 md:py-10 px-4 md:px-8 rounded-2xl transition duration-300 transform hover:scale-105 active:scale-95 md:hover:scale-105 shadow-xl"
+                            >
+                                <div className="text-4xl md:text-5xl mb-2 md:mb-3">{lvl}</div>
+                                <div className="text-base md:text-lg">
+                                    {lvl === 'N3' && 'Intermediate'}
+                                    {lvl === 'N2' && 'Advanced'}
+                                    {lvl === 'N1' && 'Expert'}
+                                </div>
+                                <div className="text-xs md:text-sm mt-1 md:mt-2 opacity-90">40 Questions</div>
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Optional: Add a small footer for mobile */}
+                    <div className="mt-6 md:mt-8 text-center">
+                        <p className="text-xs md:text-sm text-gray-500">
+                            Select a level to begin your JLPT practice test
+                        </p>
+                    </div>
                 </div>
-                <div className="text-sm mt-2 opacity-90">40 Questions</div>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
+            </div>
+        );
+    }
 
   // Test Screen
   if (screen === 'test') {
