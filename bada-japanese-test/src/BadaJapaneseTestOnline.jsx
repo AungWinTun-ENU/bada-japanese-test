@@ -272,7 +272,7 @@ export default function BadaJapaneseTestOnline() {
         );
     }
 
-    // Test Screen (updated with "I don't know" option)
+    // Test Screen (updated with "I don't know" option - same styling as others)
     if (screen === 'test') {
         const currentQ = questions[level][currentQuestion];
         const allOptions = [...currentQ.options, "わからない / I don't know"];
@@ -318,16 +318,12 @@ export default function BadaJapaneseTestOnline() {
                                 <button
                                     key={idx}
                                     onClick={() => handleAnswer(idx)}
-                                    className={`w-full text-left p-5 border-3 rounded-xl transition duration-200 text-lg ${
-                                        idx === allOptions.length - 1
-                                            ? 'border-red-300 hover:border-red-400 hover:bg-red-50 text-red-700'
-                                            : 'border-blue-200 hover:border-blue-400 hover:bg-blue-50 text-gray-800'
-                                    }`}
+                                    className="w-full text-left p-5 border-3 border-blue-200 rounded-xl hover:border-blue-400 hover:bg-blue-50 transition duration-200 text-lg text-gray-800 font-medium"
                                 >
-                  <span className={`font-bold mr-4 ${idx === allOptions.length - 1 ? 'text-red-600' : 'text-blue-600'}`}>
+                  <span className="font-bold text-blue-600 mr-4">
                     {idx + 1}.
                   </span>
-                                    <span className="font-medium">{option}</span>
+                                    {option}
                                 </button>
                             ))}
                         </div>
@@ -414,7 +410,8 @@ export default function BadaJapaneseTestOnline() {
                         </h3>
                         <div className="space-y-3">
                             {answers.filter(a => !a.isCorrect).map((answer, idx) => {
-                                const q = questions[level][answer.questionIndex]
+                                const q = questions[level][answer.questionIndex];
+
                                 const userAnswer = answer.selected === 4 ? "わからない / I don't know" : q.options[answer.selected];
                                 const correctAnswer = q.options[q.correct];
 
